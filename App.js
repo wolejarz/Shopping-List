@@ -24,7 +24,10 @@ class App extends React.Component {
           articleQuantity={this.state.articleQuantity}
           buy={this.handleBuy}
         />
-        <ListItems items={this.state.items} addItem={this.handleAddItem} />
+        <ListItems
+          items={this.state.items}
+          addItem={this.handleAddItem.bind(this)}
+        />
       </React.Fragment>
     );
   }
@@ -35,11 +38,13 @@ class App extends React.Component {
       order: 0,
       articleQuantity: 0,
     });
+    console.log(this.state);
   };
-  handleAddItem = (props) => {
-    this.setState({
-      order: this.state.order + props.item.price,
-      articleQuantity: ++this.state.articleQuantity,
-    });
+
+  handleAddItem = (item) => {
+    this.setState((prevState) => ({
+      order: prevState.order + item.price,
+      articleQuantity: ++prevState.articleQuantity,
+    }));
   };
 }

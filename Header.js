@@ -6,7 +6,7 @@ const Header = (props) => {
         <div>Wallet: {props.wallet}</div>
         <div>Order: {props.order}</div>
       </header>
-      <button id="buy" onClick={() => {}}>
+      <button id="buy" onClick={() => props.buy()}>
         BUY
       </button>
     </div>
